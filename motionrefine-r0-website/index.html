@@ -15,7 +15,7 @@
 <!-- ============ HERO ============ -->
 <section id="hero">
   <div class="container">
-    <p class="venue">Under Review</p>
+    <p class="venue">ACM Multimedia 2026 &middot; Under review</p>
     <h1 class="paper-title">MotionRefine-R0: Reinforcing 3D Human Motion Generation<br>with Physical and Semantic Refinement</h1>
     <p class="authors">Anonymous Authors</p>
     <div class="hero-links">
@@ -45,10 +45,14 @@
     <figure class="teaser-figure">
       <img src="static/images/teaser.png" alt="MotionRefine-R0 refines motions from any frozen base generator in a single forward pass." loading="lazy">
       <figcaption>
-        <strong>MotionRefine-R0 refines motions from any frozen base generator in a single forward pass.</strong>
-        <em>Top</em>: MoMask (263D discrete VQ) &mdash; our policy corrects physical artifacts (compressed skeleton, foot skating), bringing joint positions closely toward the ground truth (64.3% MPJPE reduction).
-        <em>Bottom</em>: HY-Motion (201D continuous SMPL-H) &mdash; the policy adjusts temporal pose trajectories for better semantic alignment with the text description, while preserving the inherent physical quality.
-        All MoMask results averaged over 3 random seeds. Keyframes at uniform time intervals.
+        <strong>Teaser (HY-Motion):</strong> our policy refines 201D SMPL-H motions from a frozen HY-Motion generator in a single forward pass (~2&thinsp;ms), improving reconstruction and semantic alignment toward MotionBERT-extracted ground truth while preserving physical plausibility.
+        MoMask (263D VQ) is shown separately below; full qualitative grids for all generators are in the following sections.
+      </figcaption>
+    </figure>
+    <figure class="teaser-figure teaser-secondary">
+      <img src="static/images/teaser_momask.png" alt="MoMask 263D: MotionRefine-R0 reduces MPJPE and foot skating vs. base MoMask." loading="lazy">
+      <figcaption>
+        <strong>MoMask (263D discrete VQ):</strong> residual correction reduces compressed skeleton artifacts and foot skating; averaged over three random seeds with uniform keyframe sampling (see paper for metrics).
       </figcaption>
     </figure>
   </div>
@@ -210,7 +214,7 @@
 <section id="qualitative">
   <div class="container">
     <h2>Qualitative Comparisons</h2>
-    <p class="section-desc">Static keyframe comparisons showing Ground Truth, Base generator output, and our refined output. Each row corresponds to one text prompt; keyframes are sampled at uniform time intervals.</p>
+    <p class="section-desc">Static keyframe comparisons showing ground truth, base generator output, and our refined output. Each row is one text prompt; keyframes are sampled at uniform time intervals unless noted in the paper.</p>
 
     <div class="tabs" data-tab-group="qualitative">
       <button class="tab-btn active" data-tab="momask-263d">MoMask (263D)</button>
@@ -441,6 +445,26 @@
   </div>
 </section>
 
+<!-- ============ IN-THE-WILD (MotionBERT + HY-Motion + Ours) ============ -->
+<section id="wild">
+  <div class="container">
+    <h2>In-the-Wild Videos</h2>
+    <p class="section-desc">
+      MotionBERT extracts 3D motion from original video; HY-Motion provides a text-conditioned baseline; our policy refines it using GPT-4-generated pose descriptions. Layout matches the multi-panel figure in the paper (original video, HY-Motion mesh, text prompt, ours).
+    </p>
+    <div class="wild-grid">
+      <figure class="wild-figure">
+        <img src="static/images/multi_detail_soda.png" alt="Qualitative result on a dance performance video" loading="lazy">
+        <figcaption>Dance performance (soda clip): four keyframes.</figcaption>
+      </figure>
+      <figure class="wild-figure">
+        <img src="static/images/multi_detail_workout.png" alt="Qualitative result on a K-pop choreography video" loading="lazy">
+        <figcaption>K-pop choreography (<code>aespa.mp4</code> segment): four keyframes; video and extracted motion are time-aligned at 30&thinsp;fps.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <!-- ============ MOTION GALLERY ============ -->
 <section id="gallery">
   <div class="container">
@@ -614,10 +638,31 @@
   </div>
 </section>
 
+<!-- ============ CITATION ============ -->
+<section id="citation">
+  <div class="container">
+    <h2>Citation</h2>
+    <p class="section-desc">Anonymous submission version (ACM MM 2026). Replace with the official BibTeX after acceptance.</p>
+    <div class="bibtex-wrapper">
+      <button type="button" class="copy-btn" id="copy-bibtex" aria-label="Copy BibTeX to clipboard">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copy</span>
+      </button>
+      <pre><code id="bibtex-code">@inproceedings{motionrefine_r0_2026,
+  title     = {MotionRefine-R0: Reinforcing {3D} Human Motion Generation with Physical and Semantic Refinement},
+  author    = {Anonymous},
+  booktitle = {Proceedings of the ACM International Conference on Multimedia},
+  year      = {2026},
+  note      = {Under review}
+}</code></pre>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="container">
-    <p>MotionRefine-R0</p>
+    <p>MotionRefine-R0 &middot; ACM Multimedia 2026 (under review)</p>
   </div>
 </footer>
 
